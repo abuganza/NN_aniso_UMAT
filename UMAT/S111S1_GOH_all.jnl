@@ -1,0 +1,2097 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.ModelFromInputFile(inputFileName='/home/vtac/UMAT/uniaxial_S111S1_xys.inp', 
+    name='uniaxial_S111S1_xys')
+del mdb.models['Model-1']
+del mdb.models['uniaxial_S111S1_xys'].materials['MATERIAL-1'].userMaterial
+mdb.models['uniaxial_S111S1_xys'].materials['MATERIAL-1'].Hyperelastic(
+    anisotropicType=HOLZAPFEL, localDirections=1, materialType=ANISOTROPIC, 
+    table=((0.001349, 0.0, 0.021368, 0.1149, 0.33333), ))
+mdb.models.changeKey(fromName='uniaxial_S111S1_xys', toName=
+    'uniaxial_S111S1_GOH')
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='uniaxial_S111S1_GOH', modelPrint=
+    OFF, multiprocessingMode=DEFAULT, name='uniaxial_S111S1_GOH', 
+    nodalOutputPrecision=SINGLE, numCpus=1, numGPUs=0, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.jobs['uniaxial_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'Anisotropic material properties without a local orientation system have been defined for 867 elements. Anisotropic material properties must be defined in a local orientation system. The elements are identified in element set ErrElemAnisotropicMaterial.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/UMAT/uniaxial_S111S1_GOH.odb', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.models['uniaxial_S111S1_GOH'].parts['PART-1'].MaterialOrientation(
+    additionalRotationType=ROTATION_NONE, axis=AXIS_1, fieldName='', localCsys=
+    None, orientationType=GLOBAL, region=Region(
+    elements=mdb.models['uniaxial_S111S1_GOH'].parts['PART-1'].elements.getSequenceFromMask(
+    mask=('[#ffffffff:27 #7 ]', ), )), stackDirection=STACK_3)
+mdb.models['uniaxial_S111S1_GOH'].rootAssembly.regenerate()
+mdb.jobs['uniaxial_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/UMAT/uniaxial_S111S1_GOH.odb', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ERROR, {'phase': STANDARD_PHASE, 
+    'message': 'INCOMPRESSIBLE ANISOTROPIC HYPERELASTIC MATERIALS CAN ONLY BE USED WITH HYBRID, PLANE STRESS, OR SHELL ELEMENTS', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ABORTED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase failed due to errors', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.models['uniaxial_S111S1_GOH'].materials['MATERIAL-1'].hyperelastic.setValues(
+    table=((0.001349, 0.1, 0.021368, 0.1149, 0.33333), ))
+mdb.jobs['uniaxial_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE COMPRESSIBILITY OF THE ANISOTROPIC HYPERELASTIC MATERIAL WILL BE IGNORED IF USED IN COMBINATION WITH ELEMENTS WITH PLANE-STRESS FORMULATION. Abaqus ASSUMES FULLY INCOMPRESSIBLE BEHAVIOR IN THIS SITUATION.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/UMAT/uniaxial_S111S1_GOH.odb', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(MEMORY_ESTIMATE, {
+    'phase': STANDARD_PHASE, 'jobName': 'uniaxial_S111S1_GOH', 'memory': 38.0})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(PHYSICAL_MEMORY, {
+    'phase': STANDARD_PHASE, 'physical_memory': 95232.0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(MINIMUM_MEMORY, {
+    'minimum_memory': 23.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 26 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.1, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 188 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.2, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 169 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.3, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 155 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.4, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 134 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.5, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 114 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.6, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 101 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.7, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 83 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.8, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 70 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.9, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 63 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 1.0, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(JOB_COMPLETED, {
+    'time': 'Wed Jun 16 15:56:50 2021', 'jobName': 'uniaxial_S111S1_GOH'})
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['uniaxial_S111S1_GOH'].materials['MATERIAL-1'].hyperelastic.setValues(
+    table=((0.001349, 10.0, 0.021368, 0.1149, 0.33333), ))
+mdb.jobs['uniaxial_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE COMPRESSIBILITY OF THE ANISOTROPIC HYPERELASTIC MATERIAL WILL BE IGNORED IF USED IN COMBINATION WITH ELEMENTS WITH PLANE-STRESS FORMULATION. Abaqus ASSUMES FULLY INCOMPRESSIBLE BEHAVIOR IN THIS SITUATION.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/UMAT/uniaxial_S111S1_GOH.odb', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(MEMORY_ESTIMATE, {
+    'phase': STANDARD_PHASE, 'jobName': 'uniaxial_S111S1_GOH', 'memory': 38.0})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(PHYSICAL_MEMORY, {
+    'phase': STANDARD_PHASE, 'physical_memory': 95232.0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(MINIMUM_MEMORY, {
+    'minimum_memory': 23.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.1, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.2, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.3, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.4, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.5, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.6, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.7, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.8, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.9, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 1.0, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(JOB_COMPLETED, {
+    'time': 'Wed Jun 16 15:59:08 2021', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.models['uniaxial_S111S1_GOH'].materials['MATERIAL-1'].hyperelastic.setValues(
+    table=((0.001349, 0.1, 0.021368, 0.1149, 0.33333), ))
+mdb.jobs['uniaxial_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE COMPRESSIBILITY OF THE ANISOTROPIC HYPERELASTIC MATERIAL WILL BE IGNORED IF USED IN COMBINATION WITH ELEMENTS WITH PLANE-STRESS FORMULATION. Abaqus ASSUMES FULLY INCOMPRESSIBLE BEHAVIOR IN THIS SITUATION.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/UMAT/uniaxial_S111S1_GOH.odb', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(MEMORY_ESTIMATE, {
+    'phase': STANDARD_PHASE, 'jobName': 'uniaxial_S111S1_GOH', 'memory': 38.0})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(PHYSICAL_MEMORY, {
+    'phase': STANDARD_PHASE, 'physical_memory': 95232.0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(MINIMUM_MEMORY, {
+    'minimum_memory': 23.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 26 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.1, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 188 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.2, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 169 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.3, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 155 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.4, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 134 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.5, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 114 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.6, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 101 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.7, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 83 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.8, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 70 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.9, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 63 negative eigenvalues.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 1.0, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(JOB_COMPLETED, {
+    'time': 'Wed Jun 16 16:00:27 2021', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.ModelFromInputFile(inputFileName='/home/vtac/UMAT/shear_S111S1_xys.inp', 
+    name='shear_S111S1_xys')
+del mdb.models['shear_S111S1_xys'].materials['MATERIAL-1'].userMaterial
+mdb.models['shear_S111S1_xys'].materials['MATERIAL-1'].Hyperelastic(
+    anisotropicType=HOLZAPFEL, localDirections=1, materialType=ANISOTROPIC, 
+    table=((0.001349, 0.1, 0.021368, 0.1149, 0.33333), ))
+mdb.models['shear_S111S1_xys'].parts['PART-1'].MaterialOrientation(
+    additionalRotationType=ROTATION_NONE, axis=AXIS_1, fieldName='', localCsys=
+    None, orientationType=GLOBAL, region=Region(
+    elements=mdb.models['shear_S111S1_xys'].parts['PART-1'].elements.getSequenceFromMask(
+    mask=('[#ffffffff:27 #7 ]', ), )), stackDirection=STACK_3)
+mdb.models['shear_S111S1_xys'].rootAssembly.regenerate()
+mdb.models.changeKey(fromName='shear_S111S1_xys', toName='shear_S111S1_GOH')
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='shear_S111S1_GOH', modelPrint=OFF
+    , multiprocessingMode=DEFAULT, name='shear_S111S1_GOH', 
+    nodalOutputPrecision=SINGLE, numCpus=1, numGPUs=0, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.jobs['shear_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['shear_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE COMPRESSIBILITY OF THE ANISOTROPIC HYPERELASTIC MATERIAL WILL BE IGNORED IF USED IN COMBINATION WITH ELEMENTS WITH PLANE-STRESS FORMULATION. Abaqus ASSUMES FULLY INCOMPRESSIBLE BEHAVIOR IN THIS SITUATION.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/UMAT/shear_S111S1_GOH.odb', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(MEMORY_ESTIMATE, {
+    'phase': STANDARD_PHASE, 'jobName': 'shear_S111S1_GOH', 'memory': 38.0})
+mdb.jobs['shear_S111S1_GOH']._Message(PHYSICAL_MEMORY, {
+    'phase': STANDARD_PHASE, 'physical_memory': 95232.0, 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.001, 
+    'attempts': 1, 'timeIncrement': 0.001, 'increment': 1, 'stepTime': 0.001, 
+    'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.002, 
+    'attempts': 1, 'timeIncrement': 0.001, 'increment': 2, 'stepTime': 0.002, 
+    'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.0035, 
+    'attempts': 1, 'timeIncrement': 0.0015, 'increment': 3, 'stepTime': 0.0035, 
+    'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.00575, 
+    'attempts': 1, 'timeIncrement': 0.00225, 'increment': 4, 
+    'stepTime': 0.00575, 'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.009125, 
+    'attempts': 1, 'timeIncrement': 0.003375, 'increment': 5, 
+    'stepTime': 0.009125, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.0141875, 
+    'attempts': 1, 'timeIncrement': 0.0050625, 'increment': 6, 
+    'stepTime': 0.0141875, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 6 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.02178125, 
+    'attempts': 1, 'timeIncrement': 0.00759375, 'increment': 7, 
+    'stepTime': 0.02178125, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 14 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.033171875, 
+    'attempts': 1, 'timeIncrement': 0.011390625, 'increment': 8, 
+    'stepTime': 0.033171875, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 19 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.0445625, 
+    'attempts': 1, 'timeIncrement': 0.011390625, 'increment': 9, 
+    'stepTime': 0.0445625, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 17 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.055953125, 
+    'attempts': 1, 'timeIncrement': 0.011390625, 'increment': 10, 
+    'stepTime': 0.055953125, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 17 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.06734375, 
+    'attempts': 1, 'timeIncrement': 0.011390625, 'increment': 11, 
+    'stepTime': 0.06734375, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 17 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 20 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 19 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 12, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.078734375, 
+    'attempts': 1, 'timeIncrement': 0.011390625, 'increment': 12, 
+    'stepTime': 0.078734375, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 16 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 13, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.090125, 
+    'attempts': 1, 'timeIncrement': 0.011390625, 'increment': 13, 
+    'stepTime': 0.090125, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 13 negative eigenvalues.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 14, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.00987499999999999, 'increment': 14, 'stepTime': 0.1, 
+    'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['shear_S111S1_GOH']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(JOB_COMPLETED, {
+    'time': 'Wed Jun 16 16:08:01 2021', 'jobName': 'shear_S111S1_GOH'})
+mdb.ModelFromInputFile(inputFileName='/home/vtac/UMAT/torsion_S111S1_xys.inp', 
+    name='torsion_S111S1_xys')
+mdb.models.changeKey(fromName='torsion_S111S1_xys', toName=
+    'torsion_S111S1_GOH')
+del mdb.models['torsion_S111S1_GOH'].materials['MATERIAL-1'].userMaterial
+mdb.models['torsion_S111S1_GOH'].materials['MATERIAL-1'].Hyperelastic(
+    anisotropicType=HOLZAPFEL, localDirections=1, materialType=ANISOTROPIC, 
+    table=((0.001349, 0.1, 0.021368, 0.1149, 0.33333), ))
+mdb.models['torsion_S111S1_GOH'].parts['PART-1'].MaterialOrientation(
+    additionalRotationType=ROTATION_NONE, axis=AXIS_1, fieldName='', localCsys=
+    None, orientationType=GLOBAL, region=Region(
+    elements=mdb.models['torsion_S111S1_GOH'].parts['PART-1'].elements.getSequenceFromMask(
+    mask=('[#ffffffff:27 #7 ]', ), )), stackDirection=STACK_3)
+mdb.models['torsion_S111S1_GOH'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='torsion_S111S1_GOH', modelPrint=
+    OFF, multiprocessingMode=DEFAULT, name='torsion_S111S1_GOH', 
+    nodalOutputPrecision=SINGLE, numCpus=1, numGPUs=0, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.jobs['torsion_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['torsion_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE COMPRESSIBILITY OF THE ANISOTROPIC HYPERELASTIC MATERIAL WILL BE IGNORED IF USED IN COMBINATION WITH ELEMENTS WITH PLANE-STRESS FORMULATION. Abaqus ASSUMES FULLY INCOMPRESSIBLE BEHAVIOR IN THIS SITUATION.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/UMAT/torsion_S111S1_GOH.odb', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(MEMORY_ESTIMATE, {
+    'phase': STANDARD_PHASE, 'jobName': 'torsion_S111S1_GOH', 'memory': 38.0})
+mdb.jobs['torsion_S111S1_GOH']._Message(PHYSICAL_MEMORY, {
+    'phase': STANDARD_PHASE, 'physical_memory': 95232.0, 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(MINIMUM_MEMORY, {
+    'minimum_memory': 24.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.1, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 
+    'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 'iterations': 4, 
+    'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.2, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 
+    'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 'iterations': 4, 
+    'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 52 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.35, 
+    'attempts': 1, 'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 
+    'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 'iterations': 4, 
+    'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 249 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 16 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 3 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.575, 
+    'attempts': 1, 'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 
+    'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 'iterations': 7, 
+    'phase': STANDARD_PHASE, 'equilibrium': 7})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 291 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 24 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 53 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 151 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.575, 
+    'attempts': ' 1U', 'timeIncrement': 0.225, 'increment': 5, 
+    'stepTime': 0.575, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 
+    'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.63125, 
+    'attempts': 2, 'timeIncrement': 0.05625, 'increment': 5, 
+    'stepTime': 0.63125, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.6875, 
+    'attempts': 1, 'timeIncrement': 0.05625, 'increment': 6, 
+    'stepTime': 0.6875, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.771875, 
+    'attempts': 1, 'timeIncrement': 0.084375, 'increment': 7, 
+    'stepTime': 0.771875, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.8984375, 
+    'attempts': 1, 'timeIncrement': 0.1265625, 'increment': 8, 
+    'stepTime': 0.8984375, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 170 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.08828125, 
+    'attempts': 1, 'timeIncrement': 0.18984375, 'increment': 9, 
+    'stepTime': 1.08828125, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 348 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 9 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.373046875, 
+    'attempts': 1, 'timeIncrement': 0.284765625, 'increment': 10, 
+    'stepTime': 1.373046875, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 382 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 54 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'EXCESSIVE DISTORTION AT A TOTAL OF 8 INTEGRATION POINTS IN SOLID (CONTINUUM) ELEMENTS', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.373046875, 
+    'attempts': ' 1U', 'timeIncrement': 0.284765625, 'increment': 11, 
+    'stepTime': 1.373046875, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.44423828125, 
+    'attempts': 2, 'timeIncrement': 0.07119140625, 'increment': 11, 
+    'stepTime': 1.44423828125, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 12, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.5154296875, 
+    'attempts': 1, 'timeIncrement': 0.07119140625, 'increment': 12, 
+    'stepTime': 1.5154296875, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 13, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.622216796875, 
+    'attempts': 1, 'timeIncrement': 0.106787109375, 'increment': 13, 
+    'stepTime': 1.622216796875, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 84 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 14, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.7823974609375, 
+    'attempts': 1, 'timeIncrement': 0.1601806640625, 'increment': 14, 
+    'stepTime': 1.7823974609375, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 275 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 12 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 37 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.7823974609375, 
+    'attempts': ' 1U', 'timeIncrement': 0.24027099609375, 'increment': 15, 
+    'stepTime': 1.7823974609375, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 15, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.84246520996094, 
+    'attempts': 2, 'timeIncrement': 0.0600677490234375, 'increment': 15, 
+    'stepTime': 1.84246520996094, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 16, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.93256683349609, 
+    'attempts': 1, 'timeIncrement': 0.0901016235351563, 'increment': 16, 
+    'stepTime': 1.93256683349609, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 13 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 8 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 17, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.06771926879883, 
+    'attempts': 1, 'timeIncrement': 0.135152435302734, 'increment': 17, 
+    'stepTime': 2.06771926879883, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 'equilibrium': 7})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 43 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 18, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.20287170410156, 
+    'attempts': 1, 'timeIncrement': 0.135152435302734, 'increment': 18, 
+    'stepTime': 2.20287170410156, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 42 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 4 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 19, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.3380241394043, 
+    'attempts': 1, 'timeIncrement': 0.135152435302734, 'increment': 19, 
+    'stepTime': 2.3380241394043, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 'equilibrium': 7})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 41 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 38 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 125 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 279 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'EXCESSIVE DISTORTION AT A TOTAL OF 111 INTEGRATION POINTS IN SOLID (CONTINUUM) ELEMENTS', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.3380241394043, 
+    'attempts': ' 1U', 'timeIncrement': 0.135152435302734, 'increment': 20, 
+    'stepTime': 2.3380241394043, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 20, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.37181224822998, 
+    'attempts': 2, 'timeIncrement': 0.0337881088256836, 'increment': 20, 
+    'stepTime': 2.37181224822998, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 21, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.40560035705566, 
+    'attempts': 1, 'timeIncrement': 0.0337881088256836, 'increment': 21, 
+    'stepTime': 2.40560035705566, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 22, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.45628252029419, 
+    'attempts': 1, 'timeIncrement': 0.0506821632385254, 'increment': 22, 
+    'stepTime': 2.45628252029419, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 23, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.53230576515198, 
+    'attempts': 1, 'timeIncrement': 0.0760232448577881, 'increment': 23, 
+    'stepTime': 2.53230576515198, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 24, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.64634063243866, 
+    'attempts': 1, 'timeIncrement': 0.114034867286682, 'increment': 24, 
+    'stepTime': 2.64634063243866, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 113 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 25, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.81739293336868, 
+    'attempts': 1, 'timeIncrement': 0.171052300930023, 'increment': 25, 
+    'stepTime': 2.81739293336868, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 305 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 612 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1140 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'EXCESSIVE DISTORTION AT A TOTAL OF 529 INTEGRATION POINTS IN SOLID (CONTINUUM) ELEMENTS', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.81739293336868, 
+    'attempts': ' 1U', 'timeIncrement': 0.256578451395035, 'increment': 26, 
+    'stepTime': 2.81739293336868, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 26, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.88153754621744, 
+    'attempts': 2, 'timeIncrement': 0.0641446128487587, 'increment': 26, 
+    'stepTime': 2.88153754621744, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 27, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.97775446549058, 
+    'attempts': 1, 'timeIncrement': 0.0962169192731381, 'increment': 27, 
+    'stepTime': 2.97775446549058, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 31 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 28, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.12207984440029, 
+    'attempts': 1, 'timeIncrement': 0.144325378909707, 'increment': 28, 
+    'stepTime': 3.12207984440029, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 225 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 29 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 13 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 31 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.12207984440029, 
+    'attempts': ' 1U', 'timeIncrement': 0.216488068364561, 'increment': 29, 
+    'stepTime': 3.12207984440029, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 29, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.17620186149143, 
+    'attempts': 2, 'timeIncrement': 0.0541220170911402, 'increment': 29, 
+    'stepTime': 3.17620186149143, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 30, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.25738488712814, 
+    'attempts': 1, 'timeIncrement': 0.0811830256367102, 'increment': 30, 
+    'stepTime': 3.25738488712814, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 31, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.3791594255832, 
+    'attempts': 1, 'timeIncrement': 0.121774538455065, 'increment': 31, 
+    'stepTime': 3.3791594255832, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 142 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 9 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 3 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 32, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.5618212332658, 
+    'attempts': 1, 'timeIncrement': 0.182661807682598, 'increment': 32, 
+    'stepTime': 3.5618212332658, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 185 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 33, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.7444830409484, 
+    'attempts': 1, 'timeIncrement': 0.182661807682598, 'increment': 33, 
+    'stepTime': 3.7444830409484, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 185 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 36 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 131 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 484 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'EXCESSIVE DISTORTION AT A TOTAL OF 5 INTEGRATION POINTS IN SOLID (CONTINUUM) ELEMENTS', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.7444830409484, 
+    'attempts': ' 1U', 'timeIncrement': 0.182661807682598, 'increment': 34, 
+    'stepTime': 3.7444830409484, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 34, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.79014849286905, 
+    'attempts': 2, 'timeIncrement': 0.0456654519206495, 'increment': 34, 
+    'stepTime': 3.79014849286905, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 35, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.8358139447897, 
+    'attempts': 1, 'timeIncrement': 0.0456654519206495, 'increment': 35, 
+    'stepTime': 3.8358139447897, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 36, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.90431212267067, 
+    'attempts': 1, 'timeIncrement': 0.0684981778809743, 'increment': 36, 
+    'stepTime': 3.90431212267067, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 37, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 4.00705938949213, 
+    'attempts': 1, 'timeIncrement': 0.102747266821461, 'increment': 37, 
+    'stepTime': 4.00705938949213, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 57 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 38, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 4.16118028972433, 
+    'attempts': 1, 'timeIncrement': 0.154120900232192, 'increment': 38, 
+    'stepTime': 4.16118028972433, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 254 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 8 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 3 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 39, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 4.39236164007261, 
+    'attempts': 1, 'timeIncrement': 0.231181350348288, 'increment': 39, 
+    'stepTime': 4.39236164007261, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 'equilibrium': 7})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 293 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 7 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 40, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 4.6235429904209, 
+    'attempts': 1, 'timeIncrement': 0.231181350348288, 'increment': 40, 
+    'stepTime': 4.6235429904209, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 293 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 9 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 41, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 4.85472434076919, 
+    'attempts': 1, 'timeIncrement': 0.231181350348288, 'increment': 41, 
+    'stepTime': 4.85472434076919, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 292 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 37 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 516 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 574 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'EXCESSIVE DISTORTION AT A TOTAL OF 331 INTEGRATION POINTS IN SOLID (CONTINUUM) ELEMENTS', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 4.85472434076919, 
+    'attempts': ' 1U', 'timeIncrement': 0.231181350348288, 'increment': 42, 
+    'stepTime': 4.85472434076919, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 42, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 4.91251967835626, 
+    'attempts': 2, 'timeIncrement': 0.057795337587072, 'increment': 42, 
+    'stepTime': 4.91251967835626, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 43, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 4.97031501594333, 
+    'attempts': 1, 'timeIncrement': 0.057795337587072, 'increment': 43, 
+    'stepTime': 4.97031501594333, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 44, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 5.05700802232394, 
+    'attempts': 1, 'timeIncrement': 0.086693006380608, 'increment': 44, 
+    'stepTime': 5.05700802232394, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 45, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 5.18704753189485, 
+    'attempts': 1, 'timeIncrement': 0.130039509570912, 'increment': 45, 
+    'stepTime': 5.18704753189485, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 169 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 46, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 5.38210679625122, 
+    'attempts': 1, 'timeIncrement': 0.195059264356368, 'increment': 46, 
+    'stepTime': 5.38210679625122, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 209 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 47, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 5.57716606060759, 
+    'attempts': 1, 'timeIncrement': 0.195059264356368, 'increment': 47, 
+    'stepTime': 5.57716606060759, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 208 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 48, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 5.77222532496396, 
+    'attempts': 1, 'timeIncrement': 0.195059264356368, 'increment': 48, 
+    'stepTime': 5.77222532496396, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 344 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 9 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 49, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.06481422149851, 
+    'attempts': 1, 'timeIncrement': 0.292588896534552, 'increment': 49, 
+    'stepTime': 6.06481422149851, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 380 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 14 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 3 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 50, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.35740311803306, 
+    'attempts': 1, 'timeIncrement': 0.292588896534552, 'increment': 50, 
+    'stepTime': 6.35740311803306, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 'equilibrium': 7})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 379 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 32 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 115 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 90 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.35740311803306, 
+    'attempts': ' 1U', 'timeIncrement': 0.292588896534552, 'increment': 51, 
+    'stepTime': 6.35740311803306, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 51, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.4305503421667, 
+    'attempts': 2, 'timeIncrement': 0.073147224133638, 'increment': 51, 
+    'stepTime': 6.4305503421667, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 52, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.50369756630034, 
+    'attempts': 1, 'timeIncrement': 0.073147224133638, 'increment': 52, 
+    'stepTime': 6.50369756630034, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 53, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.6134184025008, 
+    'attempts': 1, 'timeIncrement': 0.109720836200457, 'increment': 53, 
+    'stepTime': 6.6134184025008, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 78 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 4 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 54, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.77799965680148, 
+    'attempts': 1, 'timeIncrement': 0.164581254300686, 'increment': 54, 
+    'stepTime': 6.77799965680148, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 122 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 28 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 4 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.77799965680148, 
+    'attempts': ' 1U', 'timeIncrement': 0.164581254300686, 'increment': 55, 
+    'stepTime': 6.77799965680148, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 55, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.81914497037665, 
+    'attempts': 2, 'timeIncrement': 0.0411453135751714, 'increment': 55, 
+    'stepTime': 6.81914497037665, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 56, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.86029028395182, 
+    'attempts': 1, 'timeIncrement': 0.0411453135751714, 'increment': 56, 
+    'stepTime': 6.86029028395182, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 57, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 6.92200825431458, 
+    'attempts': 1, 'timeIncrement': 0.0617179703627571, 'increment': 57, 
+    'stepTime': 6.92200825431458, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 58, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.01458520985872, 
+    'attempts': 1, 'timeIncrement': 0.0925769555441356, 'increment': 58, 
+    'stepTime': 7.01458520985872, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 10 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 59, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.15345064317492, 
+    'attempts': 1, 'timeIncrement': 0.138865433316203, 'increment': 59, 
+    'stepTime': 7.15345064317492, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 37 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 60, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.29231607649112, 
+    'attempts': 1, 'timeIncrement': 0.138865433316203, 'increment': 60, 
+    'stepTime': 7.29231607649112, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 37 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 61, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.43118150980733, 
+    'attempts': 1, 'timeIncrement': 0.138865433316203, 'increment': 61, 
+    'stepTime': 7.43118150980733, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 184 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 4 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 62, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.63947965978163, 
+    'attempts': 1, 'timeIncrement': 0.208298149974305, 'increment': 62, 
+    'stepTime': 7.63947965978163, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 224 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 11 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 3 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 63, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.84777780975594, 
+    'attempts': 1, 'timeIncrement': 0.208298149974305, 'increment': 63, 
+    'stepTime': 7.84777780975594, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 223 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 8 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 24 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.84777780975594, 
+    'attempts': ' 1U', 'timeIncrement': 0.208298149974305, 'increment': 64, 
+    'stepTime': 7.84777780975594, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 64, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.89985234724951, 
+    'attempts': 2, 'timeIncrement': 0.0520745374935763, 'increment': 64, 
+    'stepTime': 7.89985234724951, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 65, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.95192688474309, 
+    'attempts': 1, 'timeIncrement': 0.0520745374935763, 'increment': 65, 
+    'stepTime': 7.95192688474309, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 66, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.03003869098345, 
+    'attempts': 1, 'timeIncrement': 0.0781118062403644, 'increment': 66, 
+    'stepTime': 8.03003869098345, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 67, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.147206400344, 
+    'attempts': 1, 'timeIncrement': 0.117167709360547, 'increment': 67, 
+    'stepTime': 8.147206400344, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 100 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 68, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.32295796438482, 
+    'attempts': 1, 'timeIncrement': 0.17575156404082, 'increment': 68, 
+    'stepTime': 8.32295796438482, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 287 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 7 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 69, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.58658531044605, 
+    'attempts': 1, 'timeIncrement': 0.26362734606123, 'increment': 69, 
+    'stepTime': 8.58658531044605, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 326 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 153 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The anisotropic hyperelastic strain energy potential cannot be evaluated in 1 elements due to unrealistic material properties. These elements have been identified in element set WarnElemAnisoHypelPropStep1Inc70.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'EXCESSIVE DISTORTION AT A TOTAL OF 145 INTEGRATION POINTS IN SOLID (CONTINUUM) ELEMENTS', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.58658531044605, 
+    'attempts': ' 1U', 'timeIncrement': 0.26362734606123, 'increment': 70, 
+    'stepTime': 8.58658531044605, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 70, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.65249214696136, 
+    'attempts': 2, 'timeIncrement': 0.0659068365153075, 'increment': 70, 
+    'stepTime': 8.65249214696136, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 71, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.71839898347666, 
+    'attempts': 1, 'timeIncrement': 0.0659068365153075, 'increment': 71, 
+    'stepTime': 8.71839898347666, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 72, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.81725923824963, 
+    'attempts': 1, 'timeIncrement': 0.0988602547729612, 'increment': 72, 
+    'stepTime': 8.81725923824963, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 20 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 6 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 73, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.96554962040907, 
+    'attempts': 1, 'timeIncrement': 0.148290382159442, 'increment': 73, 
+    'stepTime': 8.96554962040907, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 60 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 113 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 303 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The anisotropic hyperelastic strain energy potential cannot be evaluated in 1 elements due to unrealistic material properties. These elements have been identified in element set WarnElemAnisoHypelPropStep1Inc74.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'EXCESSIVE DISTORTION AT A TOTAL OF 2632 INTEGRATION POINTS IN SOLID (CONTINUUM) ELEMENTS', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 8.96554962040907, 
+    'attempts': ' 1U', 'timeIncrement': 0.148290382159442, 'increment': 74, 
+    'stepTime': 8.96554962040907, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 74, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 9.00262221594893, 
+    'attempts': 2, 'timeIncrement': 0.0370725955398605, 'increment': 74, 
+    'stepTime': 9.00262221594893, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 75, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 9.03969481148879, 
+    'attempts': 1, 'timeIncrement': 0.0370725955398605, 'increment': 75, 
+    'stepTime': 9.03969481148879, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 76, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 9.09530370479858, 
+    'attempts': 1, 'timeIncrement': 0.0556088933097907, 'increment': 76, 
+    'stepTime': 9.09530370479858, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 77, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 9.17871704476327, 
+    'attempts': 1, 'timeIncrement': 0.083413339964686, 'increment': 77, 
+    'stepTime': 9.17871704476327, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 78, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 9.30383705471029, 
+    'attempts': 1, 'timeIncrement': 0.125120009947029, 'increment': 78, 
+    'stepTime': 9.30383705471029, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 123 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 79, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 9.49151706963084, 
+    'attempts': 1, 'timeIncrement': 0.187680014920544, 'increment': 79, 
+    'stepTime': 9.49151706963084, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 164 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 4 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 80, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 9.67919708455138, 
+    'attempts': 1, 'timeIncrement': 0.187680014920544, 'increment': 80, 
+    'stepTime': 9.67919708455138, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 8, 'phase': STANDARD_PHASE, 'equilibrium': 8})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 163 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 81, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 9.86687709947192, 
+    'attempts': 1, 'timeIncrement': 0.187680014920544, 'increment': 81, 
+    'stepTime': 9.86687709947192, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 45 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 2 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 82, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 10.0, 
+    'attempts': 1, 'timeIncrement': 0.133122900528075, 'increment': 82, 
+    'stepTime': 10.0, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 
+    'iterations': 7, 'phase': STANDARD_PHASE, 'equilibrium': 7})
+mdb.jobs['torsion_S111S1_GOH']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(JOB_COMPLETED, {
+    'time': 'Wed Jun 16 16:13:24 2021', 'jobName': 'torsion_S111S1_GOH'})
+# Save by vtac on 2021_06_16-16.16.04; build 2020 2019_09_13-13.49.31 163176
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['shear_S111S1_GOH'].materials['MATERIAL-1'].hyperelastic.setValues(
+    table=((0.001349, 200.0, 0.021368, 0.1149, 0.33333), ))
+mdb.models['uniaxial_S111S1_GOH'].materials['MATERIAL-1'].hyperelastic.setValues(
+    table=((0.001349, 200.0, 0.021368, 0.1149, 0.33333), ))
+mdb.models['torsion_S111S1_GOH'].materials['MATERIAL-1'].hyperelastic.setValues(
+    table=((0.001349, 200.0, 0.021368, 0.1149, 0.33333), ))
+mdb.jobs['uniaxial_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE COMPRESSIBILITY OF THE ANISOTROPIC HYPERELASTIC MATERIAL WILL BE IGNORED IF USED IN COMBINATION WITH ELEMENTS WITH PLANE-STRESS FORMULATION. Abaqus ASSUMES FULLY INCOMPRESSIBLE BEHAVIOR IN THIS SITUATION.', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/uniaxial_S111S1_GOH.odb', 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(MEMORY_ESTIMATE, {
+    'phase': STANDARD_PHASE, 'jobName': 'uniaxial_S111S1_GOH', 'memory': 38.0})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(PHYSICAL_MEMORY, {
+    'phase': STANDARD_PHASE, 'physical_memory': 95232.0, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(MINIMUM_MEMORY, {
+    'minimum_memory': 23.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.1, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.2, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.3, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.4, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.5, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.6, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.7, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.8, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 0.9, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(STATUS, {'totalTime': 1.0, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'uniaxial_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['uniaxial_S111S1_GOH']._Message(JOB_COMPLETED, {
+    'time': 'Wed Jun 23 18:43:22 2021', 'jobName': 'uniaxial_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['shear_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE COMPRESSIBILITY OF THE ANISOTROPIC HYPERELASTIC MATERIAL WILL BE IGNORED IF USED IN COMBINATION WITH ELEMENTS WITH PLANE-STRESS FORMULATION. Abaqus ASSUMES FULLY INCOMPRESSIBLE BEHAVIOR IN THIS SITUATION.', 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/shear_S111S1_GOH.odb', 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(MEMORY_ESTIMATE, {
+    'phase': STANDARD_PHASE, 'jobName': 'shear_S111S1_GOH', 'memory': 38.0})
+mdb.jobs['shear_S111S1_GOH']._Message(PHYSICAL_MEMORY, {
+    'phase': STANDARD_PHASE, 'physical_memory': 95232.0, 
+    'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(MINIMUM_MEMORY, {'minimum_memory': 23.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.001, 
+    'attempts': 1, 'timeIncrement': 0.001, 'increment': 1, 'stepTime': 0.001, 
+    'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.002, 
+    'attempts': 1, 'timeIncrement': 0.001, 'increment': 2, 'stepTime': 0.002, 
+    'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.0035, 
+    'attempts': 1, 'timeIncrement': 0.0015, 'increment': 3, 'stepTime': 0.0035, 
+    'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.00575, 
+    'attempts': 1, 'timeIncrement': 0.00225, 'increment': 4, 
+    'stepTime': 0.00575, 'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.009125, 
+    'attempts': 1, 'timeIncrement': 0.003375, 'increment': 5, 
+    'stepTime': 0.009125, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.0141875, 
+    'attempts': 1, 'timeIncrement': 0.0050625, 'increment': 6, 
+    'stepTime': 0.0141875, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.02178125, 
+    'attempts': 1, 'timeIncrement': 0.00759375, 'increment': 7, 
+    'stepTime': 0.02178125, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.033171875, 
+    'attempts': 1, 'timeIncrement': 0.011390625, 'increment': 8, 
+    'stepTime': 0.033171875, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.0502578125, 
+    'attempts': 1, 'timeIncrement': 0.0170859375, 'increment': 9, 
+    'stepTime': 0.0502578125, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.07588671875, 
+    'attempts': 1, 'timeIncrement': 0.02562890625, 'increment': 10, 
+    'stepTime': 0.07588671875, 'step': 1, 'jobName': 'shear_S111S1_GOH', 
+    'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['shear_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.02411328125, 'increment': 11, 'stepTime': 0.1, 
+    'step': 1, 'jobName': 'shear_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['shear_S111S1_GOH']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['shear_S111S1_GOH']._Message(JOB_COMPLETED, {
+    'time': 'Wed Jun 23 18:44:33 2021', 'jobName': 'shear_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH'].submit(consistencyChecking=OFF)
+mdb.jobs['torsion_S111S1_GOH']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE COMPRESSIBILITY OF THE ANISOTROPIC HYPERELASTIC MATERIAL WILL BE IGNORED IF USED IN COMBINATION WITH ELEMENTS WITH PLANE-STRESS FORMULATION. Abaqus ASSUMES FULLY INCOMPRESSIBLE BEHAVIOR IN THIS SITUATION.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': '/home/vtac/torsion_S111S1_GOH.odb', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'gilbreth-fe01.rcac.purdue.edu', 'handle': 0, 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(MEMORY_ESTIMATE, {
+    'phase': STANDARD_PHASE, 'jobName': 'torsion_S111S1_GOH', 'memory': 38.0})
+mdb.jobs['torsion_S111S1_GOH']._Message(PHYSICAL_MEMORY, {
+    'phase': STANDARD_PHASE, 'physical_memory': 95232.0, 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(MINIMUM_MEMORY, {
+    'minimum_memory': 24.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.1, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 
+    'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.2, 
+    'attempts': 1, 'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 
+    'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.35, 
+    'attempts': 1, 'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 
+    'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.575, 
+    'attempts': 1, 'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 
+    'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 0.9125, 
+    'attempts': 1, 'timeIncrement': 0.3375, 'increment': 5, 'stepTime': 0.9125, 
+    'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 1.41875, 
+    'attempts': 1, 'timeIncrement': 0.50625, 'increment': 6, 
+    'stepTime': 1.41875, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 7, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 2.178125, 
+    'attempts': 1, 'timeIncrement': 0.759375, 'increment': 7, 
+    'stepTime': 2.178125, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 3, 'phase': STANDARD_PHASE, 'equilibrium': 3})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 8, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 3.3171875, 
+    'attempts': 1, 'timeIncrement': 1.1390625, 'increment': 8, 
+    'stepTime': 3.3171875, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 9, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 5.02578125, 
+    'attempts': 1, 'timeIncrement': 1.70859375, 'increment': 9, 
+    'stepTime': 5.02578125, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 10, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 7.588671875, 
+    'attempts': 1, 'timeIncrement': 2.562890625, 'increment': 10, 
+    'stepTime': 7.588671875, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 
+    'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 'equilibrium': 4})
+mdb.jobs['torsion_S111S1_GOH']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'The system matrix has 1 negative eigenvalues.', 
+    'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 11, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(STATUS, {'totalTime': 10.0, 
+    'attempts': 1, 'timeIncrement': 2.411328125, 'increment': 11, 
+    'stepTime': 10.0, 'step': 1, 'jobName': 'torsion_S111S1_GOH', 'severe': 0, 
+    'iterations': 5, 'phase': STANDARD_PHASE, 'equilibrium': 5})
+mdb.jobs['torsion_S111S1_GOH']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'torsion_S111S1_GOH'})
+mdb.jobs['torsion_S111S1_GOH']._Message(JOB_COMPLETED, {
+    'time': 'Wed Jun 23 18:48:29 2021', 'jobName': 'torsion_S111S1_GOH'})
+# Save by vtac on 2021_06_23-18.51.05; build 2020 2019_09_13-13.49.31 163176
